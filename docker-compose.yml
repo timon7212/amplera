@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  amplera:
+    build: .
+    container_name: amplera
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - NODE_ENV=production
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
